@@ -2,9 +2,9 @@
 pkgname=zardoz-candy-icons-git
 _pkgname=zardoz-candy-icons
 pkgver=25.12
-pkgrel=02
-_user_home=$HOME
-_destname1="${_user_home}/.icons/"
+pkgrel=01
+_destname1="/usr/share/icons/"
+#_destname2="/usr/share/plasma/"
 pkgdesc="Neo candy icons"
 arch=('any')
 url="https://github.com/zardoz-ilbarbaro/${_pkgname}.git"
@@ -12,11 +12,15 @@ license=('GPL3')
 makedepends=('git')
 provides=("${pkgname}")
 replaces=()
-conflicts=('neo-candy-icons-git')
+conflicts=('arcolinux-candy-beauty-dev-git' 'a-candy-beauty-icon-theme-dev-git' 'arcolinux-candy-beauty-git' 'a-candy-beauty-icon-theme-git' 'a-candy-beauty-icon-theme-dev-git')
 options=(!strip !emptydirs)
 source=(${_pkgname}::"git+${url}")
 sha256sums=('SKIP')
 package() {
 	install -dm 755 ${pkgdir}${_destname1}
+	#install -dm 755 ${pkgdir}${_destname2}
+	#rm ${srcdir}/${_pkgname}/up*
+	#rm ${srcdir}/${_pkgname}/setup*
     cp -r ${srcdir}/${_pkgname}/.icons/* ${pkgdir}${_destname1}
+	#cp -r ${srcdir}/${_pkgname}/${_destname2}* ${pkgdir}${_destname2}
 }
